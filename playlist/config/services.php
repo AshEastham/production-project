@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'spotify' => [
+        'client-id' => env('SPOTIFY_CLIENT_ID'),
+        'client-secret' => env('SPOTIFY_CLIENT_SECRET')
+    ],
+
 ];

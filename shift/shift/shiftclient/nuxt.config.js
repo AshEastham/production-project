@@ -25,6 +25,23 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+
+    /*
+  ** Nuxt.js modules
+  */
+  modules: [
+    // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
+    '@nuxtjs/axios',
+    '@nuxtjs/bulma',
+  ],
+
+  /*
+  ** Axios settings
+  */
+  axios: {
+    baseURL: 'http://shift.test/api'
+  },
+
   /*
   ** Global CSS
   */
@@ -46,13 +63,6 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-  ],
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-    // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@nuxtjs/bulma',
   ],
   /*
   ** Build configuration

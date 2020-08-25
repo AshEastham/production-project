@@ -11,6 +11,22 @@
 |
 */
 
+Route::get('/{any}', 'SinglePageController@index')->where('any', '.*');
+
 Route::get('/', function () {
     return view('Welcome');
 });
+
+Route::get('/webapp', function () {
+    return view('Webapp');
+});
+
+Route::get('/playlist', function () {
+    return view('Playlist');
+});
+
+Route::post('/api/task', 'ApiController@storeTask');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
