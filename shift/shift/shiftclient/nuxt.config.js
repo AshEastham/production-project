@@ -33,7 +33,28 @@ export default {
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/axios',
     '@nuxtjs/bulma',
+    '@nuxtjs/auth'
   ],
+
+  auth: {
+    strategies: {
+      local: {
+        /* wrapped in endpoints, to ensure client can take into account auth settings */
+        endpoints: {
+          login: {
+            url: 'auth/login', 
+            method: 'post',
+            propertyName: 'meta.token'
+          },
+          user: {
+            url: 'auth/me',
+            method: 'get',
+            propertyName: 'data'
+          }
+        }
+      }
+    }
+  },
 
   /*
   ** Axios settings

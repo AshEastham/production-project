@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\ProductIndexResource;
+use App\Http\Resources\ProductVariationResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends ProductIndexResource
@@ -17,7 +19,9 @@ class ProductResource extends ProductIndexResource
         // Merge custom array with ProductIndexResource, 
         // to display custom properties only on single items.  Not on the /products endpoint.
         return array_merge(parent::toArray($request), [
-            'variations' => []
+            'variations' => ProductVariationResource::collection(
+                $this->variations->groupBy('type.name')
+            )
         ]);
     }
 }

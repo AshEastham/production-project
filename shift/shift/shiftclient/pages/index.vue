@@ -1,9 +1,41 @@
 <template>
-<p>Home</p>
+<div class="section">
+  <div class="container is-fluid">
+    <p class="title">Home</p>
+    <p>All Products:</p>
+  </div>
+  <div class="section">
+    <div class="container is-fluid">
+      <div class="columns is-multiline">
+        <div class="column is-3" v-for="product in products" :key="product.slug">
+          <Product :product="product" />
+        </div>
+      </div>
+    </div>
+  </div>    
+</div>
 </template>
 
 <script>
-export default {
-  //
-}
+  import Product from '@/components/products/Product'
+
+  export default {
+    data () {
+      return {
+        products: []
+      }
+    },
+
+    components: {
+      Product
+    },
+
+    async asyncData ({ params, app }) {
+      let response = await app.$axios.$get('products')
+
+      return {
+        products: response.data
+      }
+    }
+  }
 </script>

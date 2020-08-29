@@ -1,5 +1,6 @@
 <template>
   <div>
+    <TheAlert />
     <Navigation />
     <nuxt />
   </div>
@@ -7,10 +8,12 @@
 
 <script>
   import Navigation from '@/layouts/partials/Navigation'
+  import TheAlert from '@/components/globals/TheAlert'
 
   export default {
     components: {
-      Navigation
+      Navigation,
+      TheAlert
     }
   }
 </script>

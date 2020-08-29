@@ -50,9 +50,22 @@
             
             <div id="nav" class="navbar-menu">
                 <div class="navbar-end">
-                    <a href="" class="navbar-item">
-                        Sign in
-                    </a>
+                    <template v-if="!$auth.loggedIn">
+                        <nuxt-link :to="{ name: 'auth-signin' }" class="navbar-item">
+                            Sign in
+                        </nuxt-link>
+                    </template>
+                    <template v-else>
+                        <a href="#" class="navbar-item">
+                            {{ $auth.user.name }}
+                        </a>                        
+                        <nuxt-link :to="{ name: 'orders' }" class="navbar-item">
+                            Orders
+                        </nuxt-link>                           
+                        <nuxt-link :to="{ name: 'cart' }" class="navbar-item">
+                            Cart ({{ cartCount }})
+                        </nuxt-link>                                             
+                    </template>
                 </div>
             </div>
         </div>
@@ -65,7 +78,8 @@ import { mapGetters } from 'vuex'
 export default {
     computed: {
         ...mapGetters({
-            categories: 'categories'
+            categories: 'categories',
+            cartCount: 'cart/count'
         })
     }
 }
